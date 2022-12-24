@@ -16,7 +16,7 @@ cam = cv2.VideoCapture(0)
 cam.set(3, 640) # set video width
 cam.set(4, 480) # set video height
 
-face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+face_detector = cv2.CascadeClassifier('/Users/varo/Documents/Magna/HazTek/OpenCV-Face-Recognition/FacialRecognition/haarcascade_frontalface_default.xml')
 
 # For each person, enter one numeric face id
 face_id = input('\n enter user id end press <return> ==>  ')
@@ -29,6 +29,7 @@ while(True):
 
     ret, img = cam.read()
     img = cv2.flip(img, -1) # flip video image vertically
+    img = cv2.rotate(img, cv2.ROTATE_180)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_detector.detectMultiScale(gray, 1.3, 5)
 
@@ -38,7 +39,7 @@ while(True):
         count += 1
 
         # Save the captured image into the datasets folder
-        cv2.imwrite("dataset/User." + str(face_id) + '.' + str(count) + ".jpg", gray[y:y+h,x:x+w])
+        cv2.imwrite("/Users/varo/Documents/Magna/HazTek/OpenCV-Face-Recognition/FacialRecognition/dataset/User." + str(face_id) + '.' + str(count) + ".jpg", gray[y:y+h,x:x+w])
 
         cv2.imshow('image', img)
 

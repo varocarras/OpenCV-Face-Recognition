@@ -13,9 +13,9 @@ import numpy as np
 import os 
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read('trainer/trainer.yml')
-cascadePath = "haarcascade_frontalface_default.xml"
-faceCascade = cv2.CascadeClassifier(cascadePath);
+recognizer.read('/Users/varo/Documents/Magna/HazTek/OpenCV-Face-Recognition/FacialRecognition/trainer/trainer.yml')
+cascadePath = "/Users/varo/Documents/Magna/HazTek/OpenCV-Face-Recognition/FacialRecognition/haarcascade_frontalface_default.xml"
+faceCascade = cv2.CascadeClassifier(cascadePath)
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 
@@ -23,7 +23,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 id = 0
 
 # names related to ids: example ==> Marcelo: id=1,  etc
-names = ['None', 'Marcelo', 'Paula', 'Ilza', 'Z', 'W'] 
+names = ['varo','marcelo','marcelo2','marcelo3','marcelo4','marcelo5','marcelo6','marcelo'] 
 
 # Initialize and start realtime video capture
 cam = cv2.VideoCapture(0)
@@ -38,6 +38,7 @@ while True:
 
     ret, img =cam.read()
     img = cv2.flip(img, -1) # Flip vertically
+    img = cv2.rotate(img, cv2.ROTATE_180)
 
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
